@@ -1,4 +1,4 @@
-const createManager = (manager) => {
+const generateManager = (manager) => {
   return `
     <div class="col-3 card shadow" style="width: 18rem;">
       <div class="card-body">
@@ -15,7 +15,7 @@ const createManager = (manager) => {
   `;
 };
 
-const createEngineer = (engineer) => {
+const generateEngineer = (engineer) => {
   return engineers.map(engineer => {
     return `
       <div class="col-3 card shadow" style="width: 18rem;">
@@ -34,7 +34,7 @@ const createEngineer = (engineer) => {
   }).join('');
 };
 
-const createIntern = (intern) => {
+const generateIntern = (intern) => {
   return interns.map(intern => {
     return `
       <div class="col-3 card shadow" style="width: 18rem;">
@@ -70,9 +70,9 @@ const generatePage = (manager, engineer, intern) => {
         </header>
         <main class="container">
           <div class="row">
-            ${createManager(manager)}
-            ${createEngineer(engineer)}
-            ${createIntern(intern)}
+            ${generateManager(manager)}
+            ${generateEngineer(engineer)}
+            ${generateIntern(intern)}
           </div>
         </main>
       </body>
@@ -82,7 +82,7 @@ const generatePage = (manager, engineer, intern) => {
 
 module.exports = {
   generatePage,
-  createManager,
-  createEngineer,
-  createIntern
+  generateManager,
+  generateEngineer,
+  generateIntern
 }

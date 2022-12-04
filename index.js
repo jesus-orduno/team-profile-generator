@@ -7,7 +7,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-const { generateHTML, generateManager, generateEngineer, generateIntern } = require('./src/generate.js');
+const { generatePage, generateManager, generateEngineer, generateIntern } = require('./src/generate.js');
 
 // Questions to receive user input. Future development would include validation.
 const questions = {
@@ -16,21 +16,49 @@ const questions = {
       name: 'managerName',
       type: 'input',
       message: "What is the manager's name?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter a name.';
+        }
+      }
     },
     {
       name: 'managerId',
       type: 'input',
       message: "What is the manager's ID of the manager?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter an ID.';
+        }
+      }
     },
     {
       name: 'managerEmail',
       type: 'input',
       message: "What is the manager's email?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter an email.';
+        }
+      }
     },
     {
       name: 'managerOfficeNumber',
       type: 'input',
       message: "What is the manager's office number?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter an office number.';
+        }
+      }
     }
   ],
 
@@ -39,21 +67,49 @@ const questions = {
       name: 'engineerName',
       type: 'input',
       message: "What is the engineer's name?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter a name.';
+        }
+      }
     },
     {
       name: 'engineerId',
       type: 'input',
       message: "What is the engineer's ID?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter an ID.';
+        }
+      }
     },
     {
       name: 'engineerEmail',
       type: 'input',
       message: "What is the engineer's email?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter an email.';
+        }
+      }
     },
     {
       name: 'engineerGithub',
       type: 'input',
       message: "What is the engineer's GitHub username?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter a GitHub username.';
+        }
+      }
     }
   ],
 
@@ -62,21 +118,49 @@ const questions = {
       name: 'internName',
       type: 'input',
       message: "What is the intern's name?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter a name.';
+        }
+      }
     },
     {
       name: 'internId',
       type: 'input',
       message: "What is the intern's ID?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter an ID.';
+        }
+      }
     },
     {
       name: 'internEmail',
       type: 'input',
       message: "What is the intern's email?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter an email.';
+        }
+      }
     },
     {
       name: 'internSchool',
       type: 'input',
       message: "What is the intern's school?",
+      validate: (value) => {
+        if (value) {
+          return true;
+        } else {
+          return 'Please enter a school.';
+        }
+      }
     }
   ],
 
@@ -112,11 +196,13 @@ function addTeamMember(manager, engineers, interns) {
         addTeamMember(manager, engineers, interns);
       })
     } else {
-      const html = generateHTML(manager, engineers, interns);
-      fs.writeFile('./dist/generatedTeam.html', html, (err) => {
-        if (err) throw err;
-        console.log('Your team file has been created!');
-      });
+      const managerHtml = generateManager(manager);
+      const engineerHtml = generateEngineer(engineers);
+      const internHtml = generateIntern(interns);
+
+      fs.writeFile('./dist/generatedTeam.html', generatePage(managerHtml, engineerHtml, internHtml), (err) => 
+        err ? console.log(err) : console.log('Success! Your team profile has been generated!')
+      );
     }
   })
 }

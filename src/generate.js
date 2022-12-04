@@ -1,6 +1,6 @@
 const generateManager = (manager) => {
   return `
-    <div class="col-3 card shadow" style="width: 18rem;">
+    <div class="col-3 card" style="width: 18rem;">
       <div class="card-body">
         <h3>Manager: ${manager.name}</h3>
         <div class="card-body">
@@ -15,10 +15,10 @@ const generateManager = (manager) => {
   `;
 };
 
-const generateEngineer = (engineer) => {
+const generateEngineer = (engineers) => {
   return engineers.map(engineer => {
     return `
-      <div class="col-3 card shadow" style="width: 18rem;">
+      <div class="col-3 card" style="width: 18rem;">
         <div class="card-body">
           <h3>Engineer: ${engineer.name}</h3>
           <div class="card-body">
@@ -34,10 +34,10 @@ const generateEngineer = (engineer) => {
   }).join('');
 };
 
-const generateIntern = (intern) => {
+const generateIntern = (interns) => {
   return interns.map(intern => {
     return `
-      <div class="col-3 card shadow" style="width: 18rem;">
+      <div class="col-3 card" style="width: 18rem;">
         <div class="card-body">
           <h3>Intern: ${intern.name}</h3>
           <div class="card-body">
@@ -69,12 +69,15 @@ const generatePage = (manager, engineer, intern) => {
           <h1 class="text-center">My Team</h1>
         </header>
         <main class="container">
-          <div class="row">
-            ${generateManager(manager)}
-            ${generateEngineer(engineer)}
-            ${generateIntern(intern)}
+          <div class="row justify-content-center mt-5">
+            ${manager}
+            ${engineer}
+            ${intern}
           </div>
         </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
       </body>
     </html>
   `;

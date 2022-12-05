@@ -1,13 +1,19 @@
-# team-profile-generator
+# Team Profile Generator
 
-Incomplete application
+## Description
 
-Completed:
+This is a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person.
 
-- Classes
-- Command line prompts
+## Installation
 
-Incomplete:
+- `npm install` to install required dependencies like Jest, Inquirer, and Node.js
 
-- Tests
-- HTML generation
+## Usage
+
+- Run `npm run test` to check that all tests pass.
+- Run `node index.js` to start the application.
+- Answer the questions to generate your team profile. Name, ID, and Email will be required for each employee. The role will determine what additional information is required.
+- Once all employees have been added, the application will generate an HTML file in the `dist` folder.
+- Open the HTML file in your browser to view the team profile. The generated page will include functional email links and GitHub profiles where applicable.
+
+## Demo

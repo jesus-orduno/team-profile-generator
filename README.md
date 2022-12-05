@@ -17,3 +17,4 @@ This is a Node.js command-line application that takes in information about emplo
 - Open the HTML file in your browser to view the team profile. The generated page will include functional email links and GitHub profiles where applicable.
 
 ## Demo
+[jesus-orduno-team-profile-demo.webm](https://user-images.githubusercontent.com/107074271/205524412-a881eec2-c826-4361-ae5f-bef68bc88f03.webm)
